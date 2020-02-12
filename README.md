@@ -85,45 +85,13 @@ The Lambda uses the Serverless Framework to simplify configuration and deploymen
     AWS_ACCOUNT_ID=012345678901                   # Your AWS Account Id
     ```
 
-4. Edit serverless.yml by copy, pasting and editing the snippet below. The only parameters that need to be changed are under the custom heading.
-
-    ```yaml
-    service: serverless-email-forward
-
-    provider:
-      name: aws
-      runtime: nodejs12.x
-      stage: dev
-      region: us-east-1
-      iamRoleStatements:
-        - Effect: Allow
-          Action:
-            - s3:PutObject
-            - s3:PutObjectAcl
-            - S3:GetObject
-          Resource: "arn:aws:s3:::${env:S3_BUCKET}/*"
-        - Effect: Allow
-          Action:
-            - ses:SendRawEmail
-          Resource: "arn:aws:ses:${self:provider.region}:${env:AWS_ACCOUNT_ID}:identity/${env:VERIFIED_FROM_ADDRESS}"
-
-    functions:
-      forward:
-        handler: handler.forward
-        environment:
-          BUCKET: ${env:S3_BUCKET}
-
-    plugins:
-      - serverless-dotenv-plugin
-    ```
-
-5. Deploy the function using the Serverless framework via `sls deploy`.
-6. Navigate to the AWS SES console and edit the rule created in step 3 of SES Configuration and add a new action after the first (S3) action:
+4. Deploy the function using the Serverless framework via `sls deploy`.
+5. Navigate to the AWS SES console and edit the rule created in step 3 of SES Configuration and add a new action after the first (S3) action:
    1. Choose Lambda function for the action type
    2. Select the Lambda function created in step 5
    3. Ensure invocation type is set to Event
    4. Save Rule
-7. Send a test message and confirm that it is forwarded to your account.
+6. Send a test message and confirm that it is forwarded to your account.
 
 ## For Module Developers
 
