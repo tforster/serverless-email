@@ -1,0 +1,27 @@
+service: serverless-email-forward
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+        - S3:GetObject
+      Resource: "arn:aws:s3:::${env:S3_BUCKET}/*"
+    - Effect: Allow
+      Action:
+        - ses:SendRawEmail
+      Resource: "arn:aws:ses:${self:provider.region}:${env:AWS_ACCOUNT_ID}:identity/${env:VERIFIED_FROM_ADDRESS}"
+
+functions:
+  forward:
+    handler: handler.forward
+    environment:
+      BUCKET: ${env:S3_BUCKET}
+
+plugins:
+  - serverless-dotenv-plugin

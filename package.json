@@ -1,0 +1,39 @@
+{
+  "name": "@tforster/serverless-email",
+  "version": "0.0.1",
+  "description": "A suite of components that implement a simple serverless UI along with serverless email sending, receiving and forwarding.",
+  "author": "Troy Forster",
+  "license": "ISC",
+  "files": [],
+  "keywords": [
+    "npm",
+    "serverless",
+    "email",
+    "SES",
+    "Simple Email Service",
+    "AWS",
+    "send",
+    "receive",
+    "webclient",
+    "app"
+  ],
+  "homepage": "https://github.com/tforster/serverless-email#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tforster/serverless-email.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tforster/serverless-email/issues"
+  }
+}

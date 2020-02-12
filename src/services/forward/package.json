@@ -1,0 +1,10 @@
+{
+  "name": "@tforster/serverless-email",
+  "version": "0.0.0",
+  "description": "A suite of components that implement a simple serverless UI along with serverless email sending, receiving and forwarding.",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless": "^1.61.3",
+    "serverless-dotenv-plugin": "^2.1.1"
+  }
+}
